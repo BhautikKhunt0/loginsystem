@@ -1,0 +1,66 @@
+<body>
+  <div class="login-container">
+    <form
+      class="login-form"
+      #loginForm="ngForm"
+      (ngSubmit)="onSubmit(loginForm)"
+      novalidate
+    >
+      <h2>Login</h2>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          required
+          email
+          placeholder="Enter your email"
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="error-message"
+        >
+          <div *ngIf="email.errors?.['required']">*Email is required.</div>
+          <div *ngIf="email.errors?.['email']">
+            *Please enter a valid email address.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          ngModel
+          #password="ngModel"
+          required
+          minlength="6"
+          placeholder="Enter your password"
+        />
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="error-message"
+        >
+          <div *ngIf="password.errors?.['required']">
+            *Password is required.
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            *Password must be at least 6 characters long.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <p class="message">
+        Not registered? <a routerLink="/signup">Create an account</a>
+      </p>
+    </form>
+  </div>
+</body>

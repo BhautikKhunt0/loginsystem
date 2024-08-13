@@ -1,0 +1,31 @@
+<body>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Email</th>
+          <th>Date Created</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let index = index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.dateOfBirth }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.createdAt | date : "medium" }}</td>
+          <td>
+            <div class="button-container">
+              <button class="btn update-btn">Update</button>
+              <button class="btn delete-btn">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
